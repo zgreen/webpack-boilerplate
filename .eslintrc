@@ -1,0 +1,10 @@
+---
+extends: airbnb/base
+
+ecmaFeatures:
+  modules: true
+
+env:
+  es6: true
+  browser: true
+  node: true
