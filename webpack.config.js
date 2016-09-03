@@ -22,6 +22,7 @@ module.exports = {
   },
   resolve: {
     root: path.resolve(__dirname),
+		extensions: ['', '.js', '.jsx', '.json'],
     modulesDirectories: [
       'node_modules'
     ]
@@ -36,7 +37,7 @@ module.exports = {
     ],
     loaders: [
       {
-        test: /\.jsx$/,
+        test: /\.jsx?$/,
         exclude: /node_modules/,
         loader: 'babel',
         query: {
@@ -50,6 +51,11 @@ module.exports = {
       {
         test: /\.html$/,
         loader: 'dom!html',
+      },
+			{
+        test: /\.json$/,
+        loader: 'json',
+        exclude: /node_modules/
       }
     ]
   },
