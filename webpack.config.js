@@ -12,9 +12,6 @@ module.exports = {
   entry: {
     app: 'src/app.js',
   },
-  eslint: {
-    configFile: '.eslintrc',
-  },
   output: {
     path: 'build',
     publicPath: !isHot ? '/build/' : 'http://localhost:8080/build/',
@@ -28,7 +25,7 @@ module.exports = {
     ]
   },
   module: {
-    preloaders: [
+    preLoaders: [
       {
         test: /\.jsx?$/,
         exclude: /node_modules/,
