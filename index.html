@@ -8,7 +8,7 @@
   <div id="app"></div>
   <script>
     var script = document.createElement('script');
-    script.src = document.origin.indexOf('localhost:8080') !== -1
+    script.src = document.baseURI.indexOf('localhost:8080') !== -1
       ? 'http://localhost:8080/build/app.bundle.js'
       : 'build/app.bundle.js';
     document.body.appendChild(script);

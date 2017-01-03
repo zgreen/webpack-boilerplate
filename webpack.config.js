@@ -1,12 +1,23 @@
 'use strict';
 
-var path = require('path');
-var webpack = require('webpack');
-var postcss = require('postcss');
-var postcssCalc = require('postcss-calc');
-var postcssImport = require('postcss-import');
-var postcssNested = require('postcss-nested');
-var isHot = process.argv.indexOf('--hot') !== -1;
+const path = require('path');
+const webpack = require('webpack');
+const postcss = require('postcss');
+const postcssCalc = require('postcss-calc');
+const postcssImport = require('postcss-import');
+const postcssNested = require('postcss-nested');
+const isHot = process.argv.indexOf('--hot') !== -1;
+const isProduction = process.argv.indexOf('-p') !== -1;
+const plugins = [];
+if (isProduction) {
+	plugins.push(
+		new webpack.optimize.UglifyJsPlugin({
+			compress: {
+				warnings: false
+			}
+		})
+	)
+}
 
 module.exports = {
   entry: {
@@ -17,6 +28,7 @@ module.exports = {
     publicPath: !isHot ? '/build/' : 'http://localhost:8080/build/',
     filename: '[name].bundle.js',
   },
+	plugins,
   resolve: {
     root: path.resolve(__dirname),
 		extensions: ['', '.js', '.jsx', '.json'],
@@ -39,6 +51,7 @@ module.exports = {
         loader: 'babel',
         query: {
           presets: ['react', 'es2015']
+					plugins: ['transform-object-rest-spread']
         }
       },
       {
