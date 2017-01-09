@@ -2,11 +2,6 @@
 
 const path = require('path');
 const webpack = require('webpack');
-const postcss = require('postcss');
-const postcssCalc = require('postcss-calc');
-const postcssImport = require('postcss-import');
-const postcssNested = require('postcss-nested');
-const isHot = process.argv.indexOf('--hot') !== -1;
 const isProduction = process.argv.indexOf('-p') !== -1;
 const plugins = [];
 if (isProduction) {
@@ -20,13 +15,14 @@ if (isProduction) {
 }
 
 module.exports = {
+	externals: [require('webpack-node-externals')()],
+	target: 'node',
   entry: {
-    app: 'src/app.js',
+    app: 'src/index.js',
   },
   output: {
-    path: 'build',
-    publicPath: !isHot ? '/build/' : 'http://localhost:8080/build/',
-    filename: '[name].bundle.js',
+    filename: 'index.js',
+		libraryTarget: 'umd'
   },
 	plugins,
   resolve: {
@@ -40,34 +36,15 @@ module.exports = {
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        loader: 'eslint',
+        loader: 'eslint!flow-bin',
       }
     ],
     loaders: [
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        loader: 'babel',
-        query: {
-          presets: ['es2015'],
-					plugins: ['transform-object-rest-spread']
-        }
-      },
-      {
-        test: /\.css$/,
-        loader: 'style!css?modules&localIdentName=[name]__[local]__[hash:base64:5]!postcss'
-      },
-      {
-        test: /\.html$/,
-        loader: 'dom!html',
+        loader: 'babel'
       }
-    ]
-  },
-  postcss: function(webpack) {
-    return [
-      postcssImport({addDependencyTo: webpack}),
-      postcssNested,
-      postcssCalc,
     ]
   }
 };

@@ -1,4 +1,10 @@
-# webpack-boilerplate
-A webpack boilerplate with corresponing npm dependencies, and an eslint config.
+# webpack-boilerplate - node version
 
-Use the `react` branch if you need this for a react project.
+A webpack boilerplate, plus the following:
+
+- npm dependencies
+- eslint config
+- flowtype setup
+- basic testing rig
+
+This is the `node` branch, useful on node projects.
