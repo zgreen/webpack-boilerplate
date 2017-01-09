@@ -1,4 +1,11 @@
 # webpack-boilerplate
-A webpack boilerplate with corresponing npm dependencies, and an eslint config.
 
-Use the `react` branch if you need this for a react project.
+A webpack boilerplate, plus the following:
+
+- npm dependencies
+- eslint config
+
+There are a couple other branches which you may find useful, depending on the needs of your project:
+
+- [`react`](https://github.com/zgreen/webpack-boilerplate/tree/react) For React, use this.
+- [`node`](https://github.com/zgreen/webpack-boilerplate/tree/node) For Node.js development, use this.
