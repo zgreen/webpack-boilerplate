@@ -7,13 +7,13 @@
 <body>
   <div id="app"></div>
   <script>
-		(function(){
-			var script = document.createElement('script');
-	    script.src = document.baseURI.indexOf('localhost:8080') !== -1
-	      ? 'http://localhost:8080/build/app.bundle.js'
-	      : 'build/app.bundle.js';
-	    document.body.appendChild(script);
-		}())
+  (function(){
+    var script = document.createElement('script');
+    script.src = document.baseURI.indexOf('localhost:8080') !== -1
+      ? 'http://localhost:8080/build/app.bundle.js'
+      : 'build/app.bundle.js';
+    document.body.appendChild(script);
+  }())
   </script>
 </body>
 </html>
