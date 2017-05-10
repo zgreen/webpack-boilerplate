@@ -1,69 +1,63 @@
-'use strict';
+'use strict'
 
-const path = require('path');
-const webpack = require('webpack');
-const postcss = require('postcss');
-const postcssCalc = require('postcss-calc');
-const postcssImport = require('postcss-import');
-const postcssNested = require('postcss-nested');
-const isHot = process.argv.indexOf('--hot') !== -1;
-const isProduction = process.argv.indexOf('-p') !== -1;
-const plugins = [];
-if (isProduction) {
-	plugins.push(
-		new webpack.optimize.UglifyJsPlugin({
-			compress: {
-				warnings: false
-			}
-		})
-	)
+const path = require('path')
+const webpack = require('webpack')
+const isProduction = process.argv.indexOf('-p') !== -1
+const plugins = []
+if (!isProduction) {
+  plugins.push(new webpack.HotModuleReplacementPlugin())
 }
 
-module.exports = {
+const devServer = !isProduction ? {devServer: {hot: true}} : {}
+const config = {
+  devServer: {
+    hot: true
+  },
   entry: {
-    app: 'src/app.js',
+    app: 'src/app.js'
   },
   output: {
-    path: 'build',
-    publicPath: !isHot ? '/build/' : 'http://localhost:8080/build/',
-    filename: '[name].bundle.js',
+    path: path.join(__dirname, 'build'),
+    publicPath: '/build/',
+    filename: '[name].bundle.js'
   },
-	plugins,
+  plugins,
   resolve: {
-    root: path.resolve(__dirname),
-    modulesDirectories: [
-      'node_modules'
-    ]
+    modules: [path.resolve(__dirname), 'node_modules']
   },
   module: {
-    preLoaders: [
+    rules: [
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        loader: 'eslint',
-      }
-    ],
-    loaders: [
+        enforce: 'pre',
+        loader: 'eslint-loader'
+      },
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        loader: 'babel'
+        loader: 'babel-loader'
       },
       {
         test: /\.css$/,
-        loader: 'style!css?modules&localIdentName=[name]__[local]__[hash:base64:5]!postcss'
+        use: [
+          {loader: 'style-loader'},
+          {
+            loader: 'css-loader',
+            options: {
+              importLoaders: 1,
+              modules: true,
+              localIdentName: '[name]__[local]__[hash:base64:5]'
+            }
+          },
+          {loader: 'postcss-loader'}
+        ]
       },
       {
         test: /\.html$/,
-        loader: 'dom!html',
+        use: ['dom-loader', 'html-loader']
       }
     ]
-  },
-  postcss: function(webpack) {
-    return [
-      postcssImport({addDependencyTo: webpack}),
-      postcssNested,
-      postcssCalc,
-    ]
   }
-};
+}
+module.exports = Object.assign({}, config, devServer)
