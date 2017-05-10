@@ -1,11 +1,11 @@
 {
   "name": "webpack-boilerplate",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "A webpack boilerplate with corresponing npm dependencies, and an eslint config.",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --config webpack.config.js --content-base --inline --hot",
-    "build": "webpack --config webpack.config.js --devtool source-map --output-pathinfo -p"
+    "start": "webpack-dev-server",
+    "build": "webpack --devtool source-map --output-pathinfo -p"
   },
   "author": "Zach Green",
   "license": "ISC",
@@ -26,6 +26,6 @@
     "standard": "^10.0.2",
     "style-loader": "^0.17.0",
     "webpack": "^2.0.0",
-    "webpack-dev-server": "^2.0.0"
+    "webpack-dev-server": "^2.4.4"
   }
 }
