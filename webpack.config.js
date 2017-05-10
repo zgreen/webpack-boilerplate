@@ -2,25 +2,14 @@
 
 const path = require('path')
 const webpack = require('webpack')
-const postcss = require('postcss')
-const postcssCalc = require('postcss-calc')
-const postcssImport = require('postcss-import')
-const postcssNested = require('postcss-nested')
 const isProduction = process.argv.indexOf('-p') !== -1
 const plugins = []
-if (isProduction) {
-  plugins.push(
-    new webpack.optimize.UglifyJsPlugin({
-      compress: {
-        warnings: false
-      }
-    })
-  )
-} else {
+if (!isProduction) {
   plugins.push(new webpack.HotModuleReplacementPlugin())
 }
 
-module.exports = {
+const devServer = !isProduction ? {devServer: {hot: true}} : {}
+const config = {
   devServer: {
     hot: true
   },
@@ -52,7 +41,7 @@ module.exports = {
       {
         test: /\.css$/,
         use: [
-          { loader: 'style-loader' },
+          {loader: 'style-loader'},
           {
             loader: 'css-loader',
             options: {
@@ -61,7 +50,7 @@ module.exports = {
               localIdentName: '[name]__[local]__[hash:base64:5]'
             }
           },
-          { loader: 'postcss-loader' }
+          {loader: 'postcss-loader'}
         ]
       },
       {
@@ -69,27 +58,6 @@ module.exports = {
         use: ['dom-loader', 'html-loader']
       }
     ]
-    // preLoaders: [
-    //   {
-    //     test: /\.js$/,
-    //     exclude: /node_modules/,
-    //     loader: 'eslint'
-    //   }
-    // ],
-    // loaders: [
-    //   {
-    //     test: /\.js$/,
-    //     exclude: /node_modules/,
-    //     loader: 'babel'
-    //   },
-    //   {
-    //     test: /\.css$/,
-    //     loader: 'style!css?modules&localIdentName=[name]__[local]__[hash:base64:5]!postcss'
-    //   },
-    //   {
-    //     test: /\.html$/,
-    //     loader: 'dom!html'
-    //   }
-    // ]
   }
 }
+module.exports = Object.assign({}, config, devServer)
