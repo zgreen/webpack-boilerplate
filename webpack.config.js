@@ -14,7 +14,12 @@ const config = {
     hot: true
   },
   entry: {
-    app: 'src/app.js'
+    app: [
+      'react-hot-loader/patch',
+      'webpack-dev-server/client?http://localhost:8080',
+      'webpack/hot/only-dev-server',
+      'src/index.js'
+    ]
   },
   output: {
     path: path.join(__dirname, 'build'),
