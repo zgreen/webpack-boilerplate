@@ -2,10 +2,14 @@
 
 This is a simple starter kit for bundling code for the browser with webpack. It includes a few loaders and a basic config for babel and eslint.
 
+## Install dependencies
+
+- `yarn`
+
 ## Use
 
-- `npm start` Start the app at `http://localhost:8080`, with Hot Module Replacement enabled.
-- `npm run build` Bundle your code for production.
+- `yarn start` Start the app at `http://localhost:8080`, with Hot Module Replacement enabled.
+- `yarn build` Bundle your code for production.
 
 ## Other branches
 
