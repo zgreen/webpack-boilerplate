@@ -10,9 +10,6 @@ if (!isProduction) {
 
 const devServer = !isProduction ? {devServer: {hot: true}} : {}
 const config = {
-  devServer: {
-    hot: true
-  },
   entry: {
     app: [
       'react-hot-loader/patch',
