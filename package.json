@@ -1,6 +1,6 @@
 {
   "name": "webpack-boilerplate",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "An app starter kit with webpack.",
   "main": "index.js",
   "scripts": {
