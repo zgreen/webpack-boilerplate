@@ -8,7 +8,9 @@ if (!isProduction) {
   plugins.push(new webpack.HotModuleReplacementPlugin())
 }
 
-const devServer = !isProduction ? { devServer: { hot: true } } : {}
+const devServer = !isProduction
+  ? { devServer: { hot: true, overlay: true } }
+  : {}
 const config = {
   entry: {
     app: 'src/index.js'
@@ -58,7 +60,11 @@ const config = {
             loader: 'elm-hot-loader'
           },
           {
-            loader: 'elm-webpack-loader'
+            loader: 'elm-webpack-loader',
+            options: {
+              debug: true,
+              verbose: true
+            }
           }
         ]
       }
