@@ -1,10 +1,14 @@
 {
   "name": "webpack-boilerplate",
-  "version": "2.1.0",
+  "version": "3.0.0",
   "description": "An app starter kit with webpack.",
+  "engines": {
+    "node": ">=6.11.1"
+  },
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server",
+    "test": "jest",
     "build": "webpack --devtool source-map --output-pathinfo -p"
   },
   "author": "Zach Green",
@@ -12,7 +16,9 @@
   "repository": "https://github.com/zgreen/webpack-boilerplate",
   "devDependencies": {
     "babel-core": "^6.24.1",
+    "babel-jest": "^20.0.3",
     "babel-loader": "^7.0.0",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.24.1",
     "babel-preset-env": "^1.4.0",
     "css-loader": "^0.28.0",
     "dom-loader": "^1.0.4",
@@ -24,6 +30,7 @@
     "eslint-plugin-promise": "^3.5.0",
     "eslint-plugin-standard": "^3.0.1",
     "html-loader": "^0.4.3",
+    "jest": "^20.0.4",
     "postcss": "^6.0.1",
     "postcss-import": "^9.1.0",
     "postcss-loader": "^2.0.5",
