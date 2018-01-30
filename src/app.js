@@ -1,14 +1,14 @@
-import React from 'react'
-import Hello from './Hello'
+import React from "react";
+import Hello from "./Hello";
 
 class App extends React.Component {
-  render () {
+  render() {
     return (
       <div>
         <Hello />
       </div>
-    )
+    );
   }
 }
 
-export default App
+export default App;

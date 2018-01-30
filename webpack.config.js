@@ -8,7 +8,7 @@ if (!isProduction) {
   plugins.push(new webpack.HotModuleReplacementPlugin())
 }
 
-const devServer = !isProduction ? {devServer: {hot: true}} : {}
+const devServer = !isProduction ? { devServer: { hot: true } } : {}
 const config = {
   entry: {
     app: [
@@ -43,7 +43,7 @@ const config = {
       {
         test: /\.css$/,
         use: [
-          {loader: 'style-loader'},
+          { loader: 'style-loader' },
           {
             loader: 'css-loader',
             options: {
@@ -52,7 +52,7 @@ const config = {
               localIdentName: '[name]__[local]__[hash:base64:5]'
             }
           },
-          {loader: 'postcss-loader'}
+          { loader: 'postcss-loader' }
         ]
       }
     ]
