@@ -1,3 +1,4 @@
+/* globals expect test */
 import { greet, greeting, helloWorld } from './app'
 
 test('It returns "Hello, World."', () => {
