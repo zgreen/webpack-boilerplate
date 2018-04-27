@@ -1,9 +1,9 @@
 {
   "name": "webpack-boilerplate",
-  "version": "3.0.0",
+  "version": "4.0.0",
   "description": "An app starter kit with webpack.",
   "engines": {
-    "node": ">=6.11.1"
+    "node": "^9.8.0"
   },
   "main": "index.js",
   "scripts": {
@@ -41,7 +41,7 @@
     "react-dom": "^16.2.0",
     "standard": "^10.0.2",
     "style-loader": "^0.20.1",
-    "webpack": "^3.10.0",
+    "webpack": "^4.0.0",
     "webpack-dev-server": "^2.4.4"
   },
   "dependencies": {
