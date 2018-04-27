@@ -3,7 +3,7 @@ function greet () {
 }
 
 function greeting () {
-  document.getElementById('app').innerHTML = `<h1>${helloWorld()}</h1>`
+  document.getElementById('app').innerHTML = greet()
 }
 
 function helloWorld () {
