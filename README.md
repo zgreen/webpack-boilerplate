@@ -4,16 +4,16 @@ This is a simple starter kit for bundling code for the browser with webpack. It 
 
 ## Install dependencies
 
-- `yarn`
+* `npm install`
 
 ## Use
 
-- `yarn start` Start the app at `http://localhost:8080`, with Hot Module Replacement enabled.
-- `yarn build` Bundle your code for production.
+* `npm dev` Start the app at `http://localhost:8080`, with Hot Module Replacement enabled.
+* `npm build` Bundle your code for production.
 
 ## Other branches
 
 There are a couple other branches which you may find useful, depending on the needs of your project:
 
-- [`react`](https://github.com/zgreen/webpack-boilerplate/tree/react) For React, use this.
-- [`node`](https://github.com/zgreen/webpack-boilerplate/tree/node) For Node.js development, use this (this branch needs work).
+* [`react`](https://github.com/zgreen/webpack-boilerplate/tree/react) For React, use this.
+* [`node`](https://github.com/zgreen/webpack-boilerplate/tree/node) For Node.js development, use this (this branch needs work).

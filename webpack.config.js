@@ -2,13 +2,12 @@
 
 const path = require('path')
 const webpack = require('webpack')
-const isProduction = process.argv.indexOf('-p') !== -1
+const isProduction = process.argv.indexOf('--hot') === -1
 const plugins = []
 if (!isProduction) {
   plugins.push(new webpack.HotModuleReplacementPlugin())
 }
 
-const devServer = !isProduction ? { devServer: { hot: true } } : {}
 const config = {
   entry: {
     app: [
@@ -18,6 +17,7 @@ const config = {
       'src/index.js'
     ]
   },
+  mode: isProduction ? 'production' : 'development',
   output: {
     path: path.join(__dirname, 'build'),
     publicPath: '/build/',
@@ -58,4 +58,4 @@ const config = {
     ]
   }
 }
-module.exports = Object.assign({}, config, devServer)
+module.exports = config
